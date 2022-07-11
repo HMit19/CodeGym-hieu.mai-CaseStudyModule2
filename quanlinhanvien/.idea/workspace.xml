@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6bd2d4f1-c950-4179-ac09-99237cbfab1a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Code/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$AddEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$DeleteEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$EditEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$FindEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$ShowEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController$UpdateEmployeesListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/EmployeesController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/LoginController$LoginListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Model/Entity/Employees.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Model/Entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Model/ReadWrite/ReadWriteUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/Model/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/View/EmployeesView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/View/LoginView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Code/quanlinhanvien/module2/MVC/dao/EmployeesDao.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Bf21BhkBWb65HsTCVHSd6R7h9t" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "H:/Work/MD2/QLNV/CodeGymCaseStudyModule2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bd2d4f1-c950-4179-ac09-99237cbfab1a" name="Changes" comment="" />
+      <created>1657282600430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657282600430</updated>
+    </task>
+    <servers />
+  </component>
+</project>

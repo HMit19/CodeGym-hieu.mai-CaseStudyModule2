@@ -1,0 +1,31 @@
+Thông tin cấu hình phần mềm:
+	
+	- Ban đầu đăng nhập vào
+		+ hiển thị table rỗng, sau đó nhấn button show để hiển thị danh sách có trong file có sẵn.
+	
+
+	- Để thêm Employees
+		+ nhập đầy đủ thông tin vào các ô lấy dữ liệu và jradiobutton sau đó nhấn add.
+		+ tất cả thông tin sẽ được check validate theo mẫu và in ra thông báo tương tự lỗi.
+		+ dùng cấu trúc switch để hiển thị lỗi ra tương ứng.
+		+ khi add thành công thì thông tin của new employees sẽ được lưu vào danh sách và tự động cập nhập lại bảng table.
+		+ Kiểm tra xem id đã tồn tại hay chưa, nếu chưa thì add còn trùng thì hiển thị thông báo trùng id.
+		+ Tên nhập vào sẽ được thay đổi theo định dạng chữ cái đầu của các từ được viêt hoa
+	
+	- Để tìm Employees
+		+ Ta có thể tìm riêng lẻ theo các thông tin, các kết quả sẽ được hiển thị tùy theo kết quả tìm đc
+		+ Trừ mã Employees ra thì kết quả tìm kiếm có thể có hơn 1 kết quả.
+		+ Kết quả sẽ được sắp xếp theo thứ tự trong có sẵn trong file.
+
+	- Để xóa Employees
+		+ Để xóa thì ta sẽ thực hiện tìm theo theo yêu cầu, và hiển thị vào bảng các mục tìm thấy vào bảng, nếu có 
+		từ 1 kết quả trả về thì button delete mới enable, nếu người dùng click vào thì tất cả kết quả tìm được sẽ bị xóa.
+		+ Trường hợp không có kết quả nào trùng thì hiển thị ra thông báo không tìm thấy thông tin phù hợp.
+
+	
+	- Để chỉnh sửa thông tin Employees
+		+ Ta tìm Employees cần sửa thông tin(có thể tìm theo tên nhưng sẽ phải tìm lại 1 lần theo mã để có thể lấy ra
+		thông tin của người dùng có mã duy nhất). Khi lấy ra được người dùng theo mã, thì button edit mới enable.
+		Để chỉnh sửa thông tin, ta nhấn button edit sau đó, tất cả thông tin của người dùng sẽ được lấy ra ta sẽ thay đổi 
+		và button edit sẽ được sửa thành nút update. khi sửa xong ta nhấn update.
+
