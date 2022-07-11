@@ -1,3 +1,5 @@
+// giao diện đăng kí
+
 package quanlinhanvien.module2.MVC.View;
 
 import quanlinhanvien.module2.MVC.Controller.RegisterController;
@@ -119,6 +121,4 @@ public class RegisterView extends JFrame implements ActionListener {
         Cancel.addActionListener(e);
         System.out.println("call register");
     }
-
-
 }
