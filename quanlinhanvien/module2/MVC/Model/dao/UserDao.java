@@ -56,7 +56,6 @@ public class UserDao {
                 return 3;
             }
         }
-
         System.out.println("successful registration!");
         return 0;
     }

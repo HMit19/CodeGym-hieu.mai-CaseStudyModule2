@@ -31,17 +31,15 @@ public class LoginView extends JFrame implements ActionListener, MouseListener {
         loginLabel = new JLabel("Admin");
         userNameLabel = new JLabel("Username");
         passwordlabel = new JLabel("Password");
-        userNameField = new JTextField(22);
-        passwordField = new JPasswordField(22);
+        userNameField = new JTextField(20);
+        passwordField = new JPasswordField(20);
         passwordField.addActionListener(this);
 
         loginButton = new JButton("Sign in");
         registerLabel = new JLabel("Sign up");
         dontAccount = new JLabel("Don't have an account?");
         registerLabel.addMouseListener(this);
-
         loginButton.addActionListener(this);
-//        registerButton.addActionListener(this);
 
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
@@ -86,7 +84,7 @@ public class LoginView extends JFrame implements ActionListener, MouseListener {
         layout.putConstraint(SpringLayout.NORTH, passwordField, 148, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, loginButton, 113, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, loginButton, 185, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, dontAccount, 85, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, dontAccount, 95, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, dontAccount, 228, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, registerLabel, 230, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, registerLabel, 226, SpringLayout.NORTH, panel);

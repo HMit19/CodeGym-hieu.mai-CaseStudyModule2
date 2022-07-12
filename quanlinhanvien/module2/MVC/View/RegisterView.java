@@ -1,27 +1,27 @@
-// giao diện đăng kí
 
+// ----------------------------------GUI REGISTER------------------------------------------//
 package quanlinhanvien.module2.MVC.View;
-
-import quanlinhanvien.module2.MVC.Controller.RegisterController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class RegisterView extends JFrame implements ActionListener {
+public class RegisterView extends JFrame implements ActionListener, MouseListener {
     private JLabel registerLabel;
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JLabel confirmLabel;
+    private JLabel haveAccount;
+    private JLabel loginLabel;
     private JLabel passwordAdminLabel;
     private JTextField usernameField;
     private JTextField passwordField;
     private JTextField confirmField;
     private JTextField passwordAdminField;
-
-    private JButton Confirm;
-    private JButton Cancel;
+    private JButton confirmAccount;
 
     public RegisterView() {
         CreateComponents();
@@ -29,25 +29,28 @@ public class RegisterView extends JFrame implements ActionListener {
 
     private void CreateComponents() {
 
-        // -------------declare components----------------//
-        registerLabel = new JLabel("SIGN UP");
+        // --------------------------------------declare components--------------------------------//
+        registerLabel = new JLabel("Sign up");
         usernameLabel = new JLabel("Username");
         passwordLabel = new JLabel("Password");
         confirmLabel = new JLabel("Retype pass");
         passwordAdminLabel = new JLabel("Admin pass");
-        usernameField = new JTextField(15);
-        passwordField = new JPasswordField(15);
-        confirmField = new JPasswordField(15);
-        passwordAdminField = new JPasswordField(15);
-        Confirm = new JButton("Confirm");
-        Cancel = new JButton("Cancel");
-        //------------------------------------------------------//
+        haveAccount = new JLabel("I have an account?");
+        loginLabel = new JLabel("Sign in");
+        confirmAccount = new JButton("Confirm");
+        usernameField = new JTextField(17);
+        passwordField = new JPasswordField(17);
+        confirmField = new JPasswordField(17);
+        passwordAdminField = new JPasswordField(17);
+        //-------------------------------------------------------------------------------------------//
 
-        // ----------------declare layout------------------------//
+
+        //------------------------------------declare & add layout------------------------------------//
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel(layout);
-        //----------------------------------------------------//
+        //-------------------------------------------------------------------------------------------//
 
+        //-------------------------------------add component in panel-------------------------------//
         panel.add(registerLabel);
         panel.add(usernameLabel);
         panel.add(usernameField);
@@ -57,80 +60,72 @@ public class RegisterView extends JFrame implements ActionListener {
         panel.add(confirmField);
         panel.add(passwordAdminLabel);
         panel.add(passwordAdminField);
-        panel.add(Confirm);
-        panel.add(Cancel);
-        Confirm.addActionListener(this);
-        Cancel.addActionListener(this);
+        panel.add(haveAccount);
+        panel.add(loginLabel);
+        panel.add(confirmAccount);
+        loginLabel.addMouseListener(this);
+        confirmAccount.addActionListener(this);
+        //----------------------------------------------------------------------------------------//
 
-        //-------------------set position components------------//
-        layout.putConstraint(SpringLayout.WEST, registerLabel, 120, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, registerLabel, 15, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, usernameLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, usernameLabel, 80, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, usernameField, 130, SpringLayout.WEST, panel);
+        //--------------------------------------set position components----------------------------//
+        layout.putConstraint(SpringLayout.WEST, registerLabel, 116, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, registerLabel, 10, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, usernameLabel, 35, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, usernameLabel, 83, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, usernameField, 115, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, usernameField, 80, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, passwordLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, passwordLabel, 110, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, passwordField, 130, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordLabel, 35, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordLabel, 113, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordField, 115, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, passwordField, 110, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, confirmLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, confirmLabel, 140, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, confirmField, 130, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, confirmLabel, 35, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, confirmLabel, 143, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, confirmField, 115, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, confirmField, 140, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, passwordAdminLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, passwordAdminLabel, 170, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, passwordAdminField, 130, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordAdminLabel, 35, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordAdminLabel, 173, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordAdminField, 115, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, passwordAdminField, 170, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, confirmAccount, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, confirmAccount, 200, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, haveAccount, 135, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, haveAccount, 237, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, loginLabel, 243, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, loginLabel, 235, SpringLayout.NORTH, panel);
+        //-------------------------------------------------------------------------------------------//
 
-        layout.putConstraint(SpringLayout.WEST, Confirm, 50, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, Confirm, 210, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, Cancel, 230, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, Cancel, 210, SpringLayout.NORTH, panel);
 
-        //-----------------------------------------------------//
-
-        //--------------------set font components----------------//
-        registerLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        Font font = new Font("Arial", Font.PLAIN, 14);
+        //---------------------------------set font, color, size--------------------------------------//
+        Font font = new Font("Arial", Font.PLAIN, 13);
+        registerLabel.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 44));
+        haveAccount.setFont(new Font("Candara Light", Font.PLAIN, 14));
         usernameLabel.setFont(font);
         passwordLabel.setFont(font);
         confirmLabel.setFont(font);
         passwordAdminLabel.setFont(font);
-        //--------------------------------------------------------
+        confirmAccount.setBackground(new Color(37, 150, 190));
+        confirmAccount.setForeground(Color.white);
+        confirmAccount.setPreferredSize(new Dimension(123, 25));
+        //------------------------------------------------------------------------------------------//
 
-        //---------------add component in jframe--------------//
+
+        //------------------------------add component & set position jframe------------------------//
         this.add(panel);
         this.setSize(370, 300);
         this.setResizable(false);
         this.setTitle("Sign up");
         this.setLocationRelativeTo(null);
         this.setVisible(false);
-        //-------------------------------------------------------//
+        //----------------------------------------------------------------------------------------//
     }
 
-    public static void main(String[] args) {
-        new RegisterView();
-    }
 
+    //--------------------------------method show message-----------------------------------------//
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
+    //--------------------------------------------------------------------------------------------//
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
-
-    public void addCancelListener(ActionListener e) {
-        Cancel.addActionListener(e);
-        System.out.println("call register");
-    }
-
-    public void addConfirmListener(ActionListener e) {
-        Confirm.addActionListener(e);
-        System.out.println("call confirm");
-    }
 
     //---------------------------Get and clear information admin----------------------------------//
     public String[] getInformationAdmin() {
@@ -151,18 +146,29 @@ public class RegisterView extends JFrame implements ActionListener {
                 passwordField.getText(), confirmField.getText(), passwordAdminField.getText()};
         return arrAdmin;
     }
+    //------------------------------------------------------------------------------------------------//
 
+    //-----------------------------------clear and reset user admin---------------------------------//
     public void clearInformationAdmin() {
         usernameField.setText("");
         passwordField.setText("");
         confirmField.setText("");
         confirmField.setText("");
-        passwordAdminLabel.setText("");
+        passwordAdminField.setText("");
+        usernameField.requestFocus();
     }
 
-    //---------------------------------------------------------------------------------------//
+    public void resetPassword() {
+        passwordField.setText("");
+        confirmField.setText("");
+        confirmField.setText("");
+        passwordAdminField.setText("");
+        passwordField.requestFocus();
+    }
+    //------------------------------------------------------------------------------------------------//
 
-    //----------------------------Validate Register-------------------------------------//
+
+    //----------------------------------------Validate Register----------------------------------------//
     private boolean validateName() {
         String name = usernameField.getText();
         if (name == null || "".equals(name.trim())) {
@@ -202,4 +208,49 @@ public class RegisterView extends JFrame implements ActionListener {
         }
         return true;
     }
+
+    //----------------------------------------------------------------------------------------------//
+
+
+    //------------------------------------Action for register---------------------------------------//
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    public void addConfirmListener(ActionListener e) {
+        confirmAccount.addActionListener(e);
+        System.out.println("call confirm");
+    }
+
+    public void addBackLoginListener(MouseListener listener) {
+        loginLabel.addMouseListener(listener);
+        System.out.println("call sign in");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        loginLabel.setForeground(Color.red);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        loginLabel.setForeground(Color.black);
+    }
+
+    //----------------------------------------------------------------------------------------------//
 }

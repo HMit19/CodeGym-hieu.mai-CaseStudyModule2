@@ -13,6 +13,8 @@ public class EmployeesController {
     private EmployeesView employeesView;
     private EmployeesDao employeesDao;
 
+
+    // ------------------------------constructor-------------------------------//
     public EmployeesController(EmployeesView view) {
         this.employeesView = view;
         employeesDao = new EmployeesDao();
@@ -25,31 +27,32 @@ public class EmployeesController {
         view.addShowByUnWorkingEmployeeListener(new showUnworkingEmployeesListener());
         view.addShowByWorkingEmployeeListener(new showWorkingEmployeesListener());
     }
+    // ---------------------------------------------------------------------------------//
 
-    // show list in table
+
+    // -----------------------------show list out table-------------------------------//
     public void showEmployeesView() {
         employeesView.setVisible(true);
-//        List<Employees> employeesList = employeesDao.getListEmployees();
-//        employeesView.showListEmloyees(employeesList);
     }
 
-    // class employeesLists event
+    // ------------------------------add employees---------------------------------//
     class AddEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
             System.out.println("call add");
             Employees employees = employeesView.getInformation();
             if (employees != null && employeesView.checkExists(employeesDao.getListEmployees())) {
-                System.out.println("show thong tin chuan bi them");
-                employeesDao.add(employees);    // them nhan vien moi vao list
-                employeesView.showEmloyees(employees);  // show ra thong tin tren console
-                employeesView.showListEmloyees(employeesDao.getListEmployees());// show ra table
-                employeesView.showMessage("Add successfull");
+                employeesDao.add(employees);
+                employeesView.showEmloyees(employees);
+                employeesView.showListEmloyees(employeesDao.getListEmployees());
+                employeesView.showMessage("Add successfully");
             }
             employeesView.clearInformationEmployees();
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+    //----------------------------------Edit employees---------------------------------//
     class EditEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -66,7 +69,10 @@ public class EmployeesController {
             }
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+
+    // ---------------------------------find employees by name-----------------------------//
     class FindEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -74,14 +80,17 @@ public class EmployeesController {
             String name = employeesView.getNameEmployees();
             if (name != null) {
                 if (employeesDao.findName(name).isEmpty()) {
-                    employeesView.showMessage("Khong tim thay ket qua");
+                    employeesView.showMessage("Don't exits!");
                 } else {
                     employeesView.showListEmloyees(employeesDao.findName(name));
                 }
             }
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+
+    // -------------------------------delete employees by id------------------------------//
     class DeleteEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -96,25 +105,30 @@ public class EmployeesController {
                     employeesView.setEditBtnEnable();
                     employeesView.setIdFieldEnable();
                     employeesView.showListEmloyees(employeesDao.getListEmployees());
-                    employeesView.showMessage("Delete successfull");
+                    employeesView.showMessage("Delete successfully");
                 } else {
-                    employeesView.showMessage("Khong ton tai " + id);
+                    employeesView.showMessage(id + " Don't exits!");
                 }
             }
             employeesView.clearInformationEmployees();
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+
+    // ---------------------------------show employees----------------------------------//
     class ShowEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("show");
-//            employeesView.showInfo();
+            System.out.println("Called show employees in table");
             List<Employees> employeesList = employeesDao.getListEmployees();
             employeesView.showListEmloyees(employeesList);
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+
+    // ---------------------------save employees when edit------------------------------//
     class UpdateEmployeesListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -134,30 +148,37 @@ public class EmployeesController {
             }
         }
     }
+    // ---------------------------------------------------------------------------------//
 
+
+    // ------------------------------show employees working--------------------------------//
     class showWorkingEmployeesListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("call show working");
             if (employeesDao.working().isEmpty()) {
-                employeesView.showMessage("Rỗng!");
+                employeesView.showMessage("Empty!");
             } else {
                 employeesView.showListEmloyees(employeesDao.working());
             }
         }
     }
+    // ----------------------------------------------------------------------------------------//
 
+
+    // ---------------------------------show employees not working------------------------------//
     class showUnworkingEmployeesListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("call show not Unworking");
             if (employeesDao.unWorking().isEmpty()) {
-                employeesView.showMessage("Rỗng!");
+                employeesView.showMessage("Empty!");
             } else {
                 employeesView.showListEmloyees(employeesDao.unWorking());
             }
         }
     }
+    // ---------------------------------------------------------------------------------//
 }

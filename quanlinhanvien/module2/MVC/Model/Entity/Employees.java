@@ -24,7 +24,7 @@ public class Employees {
         this.typesEmployees = typesEmployees;
     }
 
-    //-----------------------setter and getter----------------------------------
+    //-----------------------setter and getter--------------------------------------//
     public String getIdEmployees() {
         return idEmployees;
     }
@@ -53,10 +53,6 @@ public class Employees {
         return PARTTIME;
     }
 
-    @Override
-    public String toString() {
-        return this.idEmployees + "-" + this.nameEmployees + "-" + this.statusEmployees + "-" + this.salaryEmployees + "-" + this.typesEmployees +"\n";
-    }
 
     public void setIdEmployees(String idEmployees) {
         this.idEmployees = idEmployees;
@@ -77,5 +73,9 @@ public class Employees {
     public void setSalaryEmployees(String salary) {
         this.salaryEmployees = salary;
     }
-    //--------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------//
+    @Override
+    public String toString() {
+        return this.idEmployees + "-" + this.nameEmployees + "-" + this.statusEmployees + "-" + this.salaryEmployees + "-" + this.typesEmployees + "\n";
+    }
 }
