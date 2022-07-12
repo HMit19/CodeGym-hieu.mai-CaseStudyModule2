@@ -1,3 +1,4 @@
+// Giao diện login
 package quanlinhanvien.module2.MVC.View;
 
 import quanlinhanvien.module2.MVC.Model.Entity.User;
@@ -5,17 +6,8 @@ import quanlinhanvien.module2.MVC.Model.Entity.User;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 public class LoginView extends JFrame implements ActionListener {
 
@@ -33,11 +25,11 @@ public class LoginView extends JFrame implements ActionListener {
 
     private void createComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        loginLabel = new JLabel("Admin Login");
+        loginLabel = new JLabel("Admin");
         userNameLabel = new JLabel("Username:");
         passwordlabel = new JLabel("Password:");
-        userNameField = new JTextField(18);
-        passwordField = new JPasswordField(18);
+        userNameField = new JTextField(17);
+        passwordField = new JPasswordField(17);
         passwordField.addActionListener(this);
 
         loginButton = new JButton("Login");
@@ -65,23 +57,23 @@ public class LoginView extends JFrame implements ActionListener {
         layout.putConstraint(SpringLayout.WEST, loginLabel, 135, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, loginLabel, 50, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, userNameLabel, 20, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, userNameLabel, 80, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, userNameLabel, 90, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, passwordlabel, 20, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, passwordlabel, 105, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordlabel, 125, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, userNameField, 80, SpringLayout.WEST, userNameLabel);
-        layout.putConstraint(SpringLayout.NORTH, userNameField, 80, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, userNameField, 90, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, passwordField, 80, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, passwordField, 105, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordField, 125, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, loginButton, 80, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, loginButton, 130, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, registerButton, 175, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, registerButton, 130, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, loginButton, 190, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, registerButton, 183, SpringLayout.WEST, passwordlabel);
+        layout.putConstraint(SpringLayout.NORTH, registerButton, 190, SpringLayout.NORTH, panel);
 
         // add panel tới JFrame
         this.add(panel);
         this.pack();
         // cài đặt các thuộc tính cho JFrame
-        this.setTitle("Login");
+        this.setTitle("Admin Login");
         this.setVisible(true);
         this.setSize(370, 300);
         this.setResizable(false);

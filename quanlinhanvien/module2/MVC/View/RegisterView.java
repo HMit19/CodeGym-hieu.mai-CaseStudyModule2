@@ -113,12 +113,27 @@ public class RegisterView extends JFrame implements ActionListener {
         new RegisterView();
     }
 
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
     }
 
-    public void addCancelListener(ActionListener e){
+    public void addCancelListener(ActionListener e) {
         Cancel.addActionListener(e);
         System.out.println("call register");
+    }
+
+    //----------------------------Validate Register-------------------------------------//
+    private boolean validateName() {
+        String salary = usernameField.getText();
+        if (salary == null || "".equals(salary.trim())) {
+            usernameField.requestFocus();
+            showMessage("!");
+            return false;
+        }
+        return true;
     }
 }

@@ -13,7 +13,6 @@ public class RegisterController {
     private LoginView loginView;
     public RegisterController(RegisterView registerView){
         this.registerView = registerView;
-//        this.loginView = loginView;
         registerView.addCancelListener(new CancelListener());
     }
 

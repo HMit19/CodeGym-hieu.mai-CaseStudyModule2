@@ -45,7 +45,7 @@ public class LoginController {
             } else {
                 System.out.println("that bai");
                 loginView.resetUser();
-                loginView.showMessage("username hoặc password không đúng.");
+                loginView.showMessage("Invalid username or password.");
             }
         }
     }

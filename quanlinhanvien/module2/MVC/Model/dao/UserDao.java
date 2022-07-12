@@ -10,7 +10,7 @@ public class UserDao {
         System.out.println("check duoc goi");
         if (user != null) {
             if ("admin".equals(user.getUserName()) && "admin".equals(user.getPassword())) {
-                System.out.println("show");
+                System.out.println("Invalid username or password.");
                 return true;
             }
         }

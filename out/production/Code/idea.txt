@@ -22,6 +22,8 @@ Thông tin cấu hình phần mềm:
 		từ 1 kết quả trả về thì button delete mới enable, nếu người dùng click vào thì tất cả kết quả tìm được sẽ bị xóa.
 		+ Trường hợp không có kết quả nào trùng thì hiển thị ra thông báo không tìm thấy thông tin phù hợp.
 
+
+
 	
 	- Để chỉnh sửa thông tin Employees
 		+ Ta tìm Employees cần sửa thông tin(có thể tìm theo tên nhưng sẽ phải tìm lại 1 lần theo mã để có thể lấy ra

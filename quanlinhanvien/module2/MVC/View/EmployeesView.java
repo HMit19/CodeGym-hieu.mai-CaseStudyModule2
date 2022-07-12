@@ -101,18 +101,18 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         salaryEmployees = new JLabel("Tiền lương:");
 
         // khởi tạo các trường nhập dữ liệu cho employees
-        idField = new JTextField(26);
-        nameField = new JTextField(26);
+        idField = new JTextField(25);
+        nameField = new JTextField(25);
         onStatus = new JRadioButton("Working");
         offStatus = new JRadioButton("Not Working");
-        salaryField = new JTextField(26);
+        salaryField = new JTextField(25);
         fulltimeEmployees = new JRadioButton("Fulltime");
         parttimeEmployees = new JRadioButton("Parttime");
 
         // cài đặt các cột và data cho bảng employees
         employeesTable.setModel(new DefaultTableModel((Object[][]) data, columnNames));
         jScrollPaneEmployeesTable.setViewportView(employeesTable);
-        jScrollPaneEmployeesTable.setPreferredSize(new Dimension(790, 170));
+        jScrollPaneEmployeesTable.setPreferredSize(new Dimension(790, 200));
 
         // tạo spring layout
         SpringLayout layout = new SpringLayout();
@@ -237,7 +237,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         this.add(panel);
         this.pack();
         this.setResizable(false);
-        this.setSize(850, 470);
+        this.setSize(850, 500);
         this.setLocationRelativeTo(null);
         this.setTitle("Employees Information");
     }
