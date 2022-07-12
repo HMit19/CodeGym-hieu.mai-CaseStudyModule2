@@ -30,7 +30,7 @@ public class RegisterView extends JFrame implements ActionListener {
     private void CreateComponents() {
 
         // -------------declare components----------------//
-        registerLabel = new JLabel("REGISTER");
+        registerLabel = new JLabel("SIGN UP");
         usernameLabel = new JLabel("Username");
         passwordLabel = new JLabel("Password");
         confirmLabel = new JLabel("Retype pass");
@@ -104,7 +104,7 @@ public class RegisterView extends JFrame implements ActionListener {
         this.add(panel);
         this.setSize(370, 300);
         this.setResizable(false);
-        this.setTitle("Register");
+        this.setTitle("Sign up");
         this.setLocationRelativeTo(null);
         this.setVisible(false);
         //-------------------------------------------------------//
@@ -134,10 +134,24 @@ public class RegisterView extends JFrame implements ActionListener {
 
     //---------------------------Get and clear information admin----------------------------------//
     public String[] getInformationAdmin() {
+        if (!validateName()) {
+            System.out.println("Error name!");
+            return null;
+        } else if (!validatePass()) {
+            System.out.println("Error pass!");
+            return null;
+        } else if (!validateConfirm()) {
+            System.out.println("Error confirm pass!");
+            return null;
+        } else if (!validatePassAdmin()) {
+            System.out.println("Error pass admin!");
+            return null;
+        }
         String arrAdmin[] = {usernameField.getText(),
                 passwordField.getText(), confirmField.getText(), passwordAdminField.getText()};
         return arrAdmin;
     }
+
     public void clearInformationAdmin() {
         usernameField.setText("");
         passwordField.setText("");
@@ -159,7 +173,7 @@ public class RegisterView extends JFrame implements ActionListener {
         return true;
     }
 
-    private boolean  validatePass(){
+    private boolean validatePass() {
         String pass = passwordField.getText();
         if (pass == null || "".equals(pass)) {
             passwordField.requestFocus();
@@ -169,7 +183,7 @@ public class RegisterView extends JFrame implements ActionListener {
         return true;
     }
 
-    private boolean validateConfirm(){
+    private boolean validateConfirm() {
         String confirm = confirmField.getText();
         if (confirm == null || "".equals(confirm)) {
             confirmField.requestFocus();
@@ -178,7 +192,8 @@ public class RegisterView extends JFrame implements ActionListener {
         }
         return true;
     }
-    private boolean validatePassAdmin(){
+
+    private boolean validatePassAdmin() {
         String passAdmin = passwordAdminField.getText();
         if (passAdmin == null || "".equals(passAdmin)) {
             passwordAdminField.requestFocus();

@@ -22,7 +22,7 @@ public class LoginController {
         this.adminDao = new AdminDao();
         this.loginView = loginView;
         this.registerView = new RegisterView();
-        this.userDao = new UserDao(adminDao);
+        this.userDao = new UserDao();
         loginView.addLoginListener(new LoginListener());
         loginView.addRegisterListener(new RegisterListener());
     }
