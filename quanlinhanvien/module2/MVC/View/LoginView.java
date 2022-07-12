@@ -6,10 +6,12 @@ import quanlinhanvien.module2.MVC.Model.Entity.User;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public class LoginView extends JFrame implements ActionListener {
+public class LoginView extends JFrame implements ActionListener, MouseListener {
 
     private JLabel loginLabel;
     private JLabel userNameLabel;
@@ -17,7 +19,8 @@ public class LoginView extends JFrame implements ActionListener {
     private JPasswordField passwordField;
     private JTextField userNameField;
     private JButton loginButton;
-    private JButton registerButton;
+    private JLabel dontAccount;
+    private JLabel registerLabel;
 
     public LoginView() {
         createComponents();
@@ -26,21 +29,28 @@ public class LoginView extends JFrame implements ActionListener {
     private void createComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         loginLabel = new JLabel("Admin");
-        userNameLabel = new JLabel("Username:");
-        passwordlabel = new JLabel("Password:");
-        userNameField = new JTextField(17);
-        passwordField = new JPasswordField(17);
+        userNameLabel = new JLabel("Username");
+        passwordlabel = new JLabel("Password");
+        userNameField = new JTextField(22);
+        passwordField = new JPasswordField(22);
         passwordField.addActionListener(this);
 
-        loginButton = new JButton("Login");
-        registerButton = new JButton("Register");
-        loginButton.setPreferredSize(new Dimension(86, 25));
-        registerButton.setPreferredSize(new Dimension(86, 25));
+        loginButton = new JButton("Sign in");
+        registerLabel = new JLabel("Sign up");
+        dontAccount = new JLabel("Don't have an account?");
+        registerLabel.addMouseListener(this);
+
         loginButton.addActionListener(this);
-        registerButton.addActionListener(this);
+//        registerButton.addActionListener(this);
 
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
+
+        // set width
+        loginButton.setPreferredSize(new Dimension(123, 25));
+        userNameField.setPreferredSize(new Dimension(100, 25));
+        passwordField.setPreferredSize(new Dimension(100, 25));
+
 
         // tạo đối tượng panel để chứa các thành phần của màn hình login
         panel.setSize(380, 290);
@@ -51,23 +61,41 @@ public class LoginView extends JFrame implements ActionListener {
         panel.add(userNameField);
         panel.add(passwordField);
         panel.add(loginButton);
-        panel.add(registerButton);
+        panel.add(registerLabel);
+        panel.add(dontAccount);
+//        panel.add(registerButton);
+
+        // set font for label
+        Font font = new Font("Arial", Font.PLAIN, 13);
+        loginLabel.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 44));
+        userNameLabel.setFont(font);
+        passwordlabel.setFont(font);
+        dontAccount.setFont(new Font("Candara Light", Font.PLAIN, 14));
+
 
         // cài đặt vị trí các thành phần trên màn hình login
-        layout.putConstraint(SpringLayout.WEST, loginLabel, 135, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, loginLabel, 50, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, userNameLabel, 20, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, userNameLabel, 90, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, passwordlabel, 20, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, passwordlabel, 125, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, userNameField, 80, SpringLayout.WEST, userNameLabel);
-        layout.putConstraint(SpringLayout.NORTH, userNameField, 90, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, passwordField, 80, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, passwordField, 125, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, loginButton, 80, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, loginButton, 190, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, registerButton, 183, SpringLayout.WEST, passwordlabel);
-        layout.putConstraint(SpringLayout.NORTH, registerButton, 190, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, loginLabel, 116, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, loginLabel, 20, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, userNameLabel, 65, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, userNameLabel, 88, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordlabel, 65, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordlabel, 133, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, userNameField, 65, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, userNameField, 103, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, passwordField, 65, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, passwordField, 148, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, loginButton, 113, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, loginButton, 185, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, dontAccount, 85, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, dontAccount, 228, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, registerLabel, 230, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, registerLabel, 226, SpringLayout.NORTH, panel);
+
+        // set color
+        loginButton.setBackground(new Color(37, 150, 190));
+        loginButton.setForeground(Color.white);
+
+//
 
         // add panel tới JFrame
         this.add(panel);
@@ -104,7 +132,33 @@ public class LoginView extends JFrame implements ActionListener {
         loginButton.addActionListener(listener);
     }
 
-    public void addRegisterListener(ActionListener listener) {
-        registerButton.addActionListener(listener);
+    public void addRegisterListener(MouseListener listener) {
+        registerLabel.addMouseListener(listener);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        registerLabel.setForeground(Color.black);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        registerLabel.setForeground(Color.red);
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        registerLabel.setForeground(Color.red);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        registerLabel.setForeground(Color.black);
     }
 }

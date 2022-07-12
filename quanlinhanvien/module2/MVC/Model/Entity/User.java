@@ -3,9 +3,9 @@ package quanlinhanvien.module2.MVC.Model.Entity;
 public class User {
     private String userName;
     private String password;
-    
-    public User(){
-        
+
+    public User() {
+
     }
 
     public User(String userName, String password) {
@@ -13,7 +13,8 @@ public class User {
         this.userName = userName;
         this.password = password;
     }
-//  ----------------------setter and getter-------------------------------------
+
+    //  ----------------------setter and getter-------------------------------------
     public String getUserName() {
         return userName;
     }
@@ -30,4 +31,9 @@ public class User {
         this.password = password;
     }
 //  ----------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return this.userName + "-" + this.password + "\n";
+    }
 }

@@ -420,11 +420,11 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
             showMessage("Tên không được trống!");
             return false;
         }
-        String exem = "[^0-9][a-zA-Z]{5,35}";
-        if(!name.matches(exem)){
-            showMessage("Nhập tên không chứa ký tự và số!");
-            return false;
-        }
+//        String exem = "[^0-9][a-zA-Z]{5,35}";
+//        if(!name.matches(exem)){
+//            showMessage("Nhập tên không chứa ký tự và số!");
+//            return false;
+//        }
         return true;
     }
 

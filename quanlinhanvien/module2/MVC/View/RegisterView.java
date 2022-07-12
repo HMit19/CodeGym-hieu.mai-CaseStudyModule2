@@ -33,12 +33,12 @@ public class RegisterView extends JFrame implements ActionListener {
         registerLabel = new JLabel("REGISTER");
         usernameLabel = new JLabel("Username");
         passwordLabel = new JLabel("Password");
-        confirmLabel = new JLabel("Confirm password");
-        passwordAdminLabel = new JLabel("Password Admin");
+        confirmLabel = new JLabel("Retype pass");
+        passwordAdminLabel = new JLabel("Admin pass");
         usernameField = new JTextField(15);
-        passwordField = new JTextField(15);
-        confirmField = new JTextField(15);
-        passwordAdminField = new JTextField(15);
+        passwordField = new JPasswordField(15);
+        confirmField = new JPasswordField(15);
+        passwordAdminField = new JPasswordField(15);
         Confirm = new JButton("Confirm");
         Cancel = new JButton("Cancel");
         //------------------------------------------------------//
@@ -59,6 +59,7 @@ public class RegisterView extends JFrame implements ActionListener {
         panel.add(passwordAdminField);
         panel.add(Confirm);
         panel.add(Cancel);
+        Confirm.addActionListener(this);
         Cancel.addActionListener(this);
 
         //-------------------set position components------------//
@@ -126,12 +127,62 @@ public class RegisterView extends JFrame implements ActionListener {
         System.out.println("call register");
     }
 
+    public void addConfirmListener(ActionListener e) {
+        Confirm.addActionListener(e);
+        System.out.println("call confirm");
+    }
+
+    //---------------------------Get and clear information admin----------------------------------//
+    public String[] getInformationAdmin() {
+        String arrAdmin[] = {usernameField.getText(),
+                passwordField.getText(), confirmField.getText(), passwordAdminField.getText()};
+        return arrAdmin;
+    }
+    public void clearInformationAdmin() {
+        usernameField.setText("");
+        passwordField.setText("");
+        confirmField.setText("");
+        confirmField.setText("");
+        passwordAdminLabel.setText("");
+    }
+
+    //---------------------------------------------------------------------------------------//
+
     //----------------------------Validate Register-------------------------------------//
     private boolean validateName() {
-        String salary = usernameField.getText();
-        if (salary == null || "".equals(salary.trim())) {
+        String name = usernameField.getText();
+        if (name == null || "".equals(name.trim())) {
             usernameField.requestFocus();
-            showMessage("!");
+            showMessage("Enter user name!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean  validatePass(){
+        String pass = passwordField.getText();
+        if (pass == null || "".equals(pass)) {
+            passwordField.requestFocus();
+            showMessage("Enter password!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateConfirm(){
+        String confirm = confirmField.getText();
+        if (confirm == null || "".equals(confirm)) {
+            confirmField.requestFocus();
+            showMessage("Enter confirm password!");
+            return false;
+        }
+        return true;
+    }
+    private boolean validatePassAdmin(){
+        String passAdmin = passwordAdminField.getText();
+        if (passAdmin == null || "".equals(passAdmin)) {
+            passwordAdminField.requestFocus();
+            showMessage("Enter password admin!");
             return false;
         }
         return true;

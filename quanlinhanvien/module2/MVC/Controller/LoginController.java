@@ -1,10 +1,9 @@
 package quanlinhanvien.module2.MVC.Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 import quanlinhanvien.module2.MVC.Model.Entity.User;
+import quanlinhanvien.module2.MVC.Model.dao.AdminDao;
 import quanlinhanvien.module2.MVC.View.EmployeesView;
 import quanlinhanvien.module2.MVC.View.LoginView;
 import quanlinhanvien.module2.MVC.Model.dao.UserDao;
@@ -14,13 +13,16 @@ public class LoginController {
 
     private UserDao userDao;
     private LoginView loginView;
+
+    private AdminDao adminDao;
     private EmployeesView employeesView;
     private RegisterView registerView;
 
     public LoginController(LoginView loginView) {
+        this.adminDao = new AdminDao();
         this.loginView = loginView;
         this.registerView = new RegisterView();
-        this.userDao = new UserDao();
+        this.userDao = new UserDao(adminDao);
         loginView.addLoginListener(new LoginListener());
         loginView.addRegisterListener(new RegisterListener());
     }
@@ -50,11 +52,33 @@ public class LoginController {
         }
     }
 
-    class RegisterListener implements ActionListener {
+    class RegisterListener implements MouseListener {
+
         @Override
-        public void actionPerformed(ActionEvent e) {
-            RegisterController registerController = new RegisterController(registerView);
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("call register");
             registerView.setVisible(true);
+            loginView.setVisible(false);
+            RegisterController registerController = new RegisterController(registerView, loginView);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
 }

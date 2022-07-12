@@ -11,22 +11,22 @@ import static quanlinhanvien.module2.MVC.Model.ReadWrite.ReadWriteUser.readEmplo
 import static quanlinhanvien.module2.MVC.Model.ReadWrite.ReadWriteUser.writeEmployeesToFile;
 
 public class EmployeesDao {
-    private List<Employees> ListEmployees;
+    private List<Employees> listEmployees;
     public static final String FILE_EMPLOYEES = "FILE_EMPLOYEES.txt";
 
     public EmployeesDao() {
-        this.ListEmployees = new ArrayList<>(readEmployeesByFile(FILE_EMPLOYEES));
+        this.listEmployees = new ArrayList<>(readEmployeesByFile(FILE_EMPLOYEES));
     }
 
     public void add(Employees employees) {
-        ListEmployees.add(employees);   // them vao list
-        writeEmployeesToFile(ListEmployees, FILE_EMPLOYEES);
+        listEmployees.add(employees);   // them vao list
+        writeEmployeesToFile(listEmployees, FILE_EMPLOYEES);
     }
 
     public boolean delete(String id) {
         boolean statusDelete = false;
         Employees employees = new Employees();
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (e.getIdEmployees().equals(id)) {
                 employees = e;
                 statusDelete = true;
@@ -34,8 +34,8 @@ public class EmployeesDao {
             }
         }
         if (statusDelete) {
-            ListEmployees.remove(employees);
-            writeEmployeesToFile(ListEmployees, FILE_EMPLOYEES);
+            listEmployees.remove(employees);
+            writeEmployeesToFile(listEmployees, FILE_EMPLOYEES);
             return true;
         } else {
             System.out.println("khong tim thay employees co id la " + id);
@@ -46,7 +46,7 @@ public class EmployeesDao {
 
     public List<Employees> findId(String id) {
         List<Employees> list = new ArrayList<Employees>();
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (e.getIdEmployees().equals(id)) {
                 list.add(e);
             }
@@ -56,7 +56,7 @@ public class EmployeesDao {
 
     public List<Employees> findName(String name) {
         List<Employees> list = new ArrayList<Employees>();
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (e.getNameEmployees().equals(name)) {
                 list.add(e);
             }
@@ -66,7 +66,7 @@ public class EmployeesDao {
 
     public List<Employees> findIdName(String id, String name) {
         List<Employees> list = new ArrayList<Employees>();
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (e.getNameEmployees().equals(name) && e.getIdEmployees().equals(id)) {
                 list.add(e);
             }
@@ -75,7 +75,7 @@ public class EmployeesDao {
     }
 
     public Employees edit(String id) {
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (e.getIdEmployees().equals(id)) {
                 return e;
             }
@@ -85,20 +85,20 @@ public class EmployeesDao {
 
     public void update(Employees employees) {
         String id = employees.getIdEmployees();
-        for (Employees e : ListEmployees) {
+        for (Employees e : listEmployees) {
             if (id.equals(e.getIdEmployees())) {
                 e.setNameEmployees(employees.getNameEmployees());
                 e.setStatusEmployees(employees.getStatusEmployees());
                 e.setSalaryEmployees(employees.getSalaryEmployees());
                 e.setTypesEmployees(employees.getTypesEmployees());
-                writeEmployeesToFile(ListEmployees, FILE_EMPLOYEES);
+                writeEmployeesToFile(listEmployees, FILE_EMPLOYEES);
             }
         }
     }
 
     public List<Employees> unWorking(){
         List<Employees> list = new ArrayList<Employees>();
-        for(Employees e: ListEmployees){
+        for(Employees e: listEmployees){
                 System.out.println(e.getStatusEmployees());
             if(e.getStatusEmployees().equals("Not Working")){
                 list.add(e);
@@ -109,7 +109,7 @@ public class EmployeesDao {
 
     public List<Employees> working(){
         List<Employees> list = new ArrayList<Employees>();
-        for(Employees e: ListEmployees){
+        for(Employees e: listEmployees){
             System.out.println(e.getStatusEmployees());
             if(e.getStatusEmployees().equals("Working")){
                 list.add(e);
@@ -119,11 +119,11 @@ public class EmployeesDao {
     }
 
     public List<Employees> getListEmployees() {
-        return ListEmployees;
+        return listEmployees;
     }
 
     public void setListStudents(List<Employees> listEmployees) {
-        this.ListEmployees = listEmployees;
+        this.listEmployees = listEmployees;
     }
 
 }
