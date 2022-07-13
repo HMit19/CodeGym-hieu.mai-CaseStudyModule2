@@ -1,7 +1,7 @@
 package quanlinhanvien.module2.MVC.Controller;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
-import quanlinhanvien.module2.MVC.Model.dao.EmployeesDao;
+import quanlinhanvien.module2.MVC.Model.DAO.EmployeesDao;
 import quanlinhanvien.module2.MVC.View.EmployeesView;
 
 import java.awt.event.ActionEvent;
@@ -43,7 +43,7 @@ public class EmployeesController {
             if (employees != null && employeesView.checkExists(employeesDao.getListEmployees())) {
                 employeesDao.add(employees);
                 employeesView.showEmloyees(employees);
-                employeesView.showListEmloyees(employeesDao.getListEmployees());
+                employeesView.showListEmployees(employeesDao.getListEmployees());
                 employeesView.showMessage("Add successfully");
                 employeesView.clearInformationEmployees();
             }
@@ -81,7 +81,7 @@ public class EmployeesController {
                 if (employeesDao.findName(name).isEmpty()) {
                     employeesView.showMessage("Don't exits!");
                 } else {
-                    employeesView.showListEmloyees(employeesDao.findName(name));
+                    employeesView.showListEmployees(employeesDao.findName(name));
                 }
             }
         }
@@ -109,7 +109,7 @@ public class EmployeesController {
                     employeesView.setUpdateBtnDisable();
                     employeesView.setEditBtnEnable();
                     employeesView.setIdFieldEnable();
-                    employeesView.showListEmloyees(employeesDao.getListEmployees());
+                    employeesView.showListEmployees(employeesDao.getListEmployees());
                     employeesView.showMessage("Delete successfully");
                 } else {
                     employeesView.showMessage(id + " Don't exits!");
@@ -142,7 +142,7 @@ public class EmployeesController {
             } else if (sortBy.equals("Part-time")) {
                 employeesList = employeesDao.parttime();
             }
-            employeesView.showListEmloyees(employeesList);
+            employeesView.showListEmployees(employeesList);
         }
     }
     // ---------------------------------------------------------------------------------//
@@ -157,7 +157,7 @@ public class EmployeesController {
             if (employees != null) {
                 employeesDao.update(employees);
                 employeesView.showEmloyees(employees);  // show ra thong tin tren console
-                employeesView.showListEmloyees(employeesDao.getListEmployees());// show ra table
+                employeesView.showListEmployees(employeesDao.getListEmployees());// show ra table
                 employeesView.setFindBtnEnable();
                 employeesView.setAddBtnEnable();
                 employeesView.setUpdateBtnDisable();

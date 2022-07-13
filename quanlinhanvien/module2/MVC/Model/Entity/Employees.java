@@ -45,15 +45,6 @@ public class Employees {
         return salaryEmployees;
     }
 
-    public static double getFULLTIME() {
-        return FULLTIME;
-    }
-
-    public static double getPARTTIME() {
-        return PARTTIME;
-    }
-
-
     public void setIdEmployees(String idEmployees) {
         this.idEmployees = idEmployees;
     }

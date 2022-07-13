@@ -1,7 +1,7 @@
 package quanlinhanvien.module2.MVC.Model.Entity;
 
 public class User {
-    private String userName;
+    private String username;
     private String password;
 
     public User() {
@@ -9,21 +9,21 @@ public class User {
     }
     public User(String userName, String password) {
         super();
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
     }
 
     //  ----------------------setter and getter-------------------------------------//
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -33,7 +33,7 @@ public class User {
 
     @Override
     public String toString() {
-        return this.userName + "-" + this.password + "\n";
+        return this.username + "-" + this.password + "\n";
     }
 
 }

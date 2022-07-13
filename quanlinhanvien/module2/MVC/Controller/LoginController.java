@@ -3,10 +3,10 @@ package quanlinhanvien.module2.MVC.Controller;
 import java.awt.event.*;
 
 import quanlinhanvien.module2.MVC.Model.Entity.User;
-import quanlinhanvien.module2.MVC.Model.dao.AdminDao;
+import quanlinhanvien.module2.MVC.Model.DAO.AdminDao;
 import quanlinhanvien.module2.MVC.View.EmployeesView;
 import quanlinhanvien.module2.MVC.View.LoginView;
-import quanlinhanvien.module2.MVC.Model.dao.UserDao;
+import quanlinhanvien.module2.MVC.Model.DAO.UserDao;
 import quanlinhanvien.module2.MVC.View.RegisterView;
 
 public class LoginController {
@@ -43,7 +43,7 @@ public class LoginController {
                 EmployeesController employeesController = new EmployeesController(employeesView);
                 employeesController.showEmployeesView();
                 loginView.setVisible(false);
-                employeesView.setAdmin("Admin " + user.getUserName() + " ");
+                employeesView.setAdmin("Admin " + user.getUsername() + " ");
                 System.out.println("login thanh cong");
             } else {
                 System.out.println("that bai");
@@ -76,7 +76,7 @@ public class LoginController {
                     EmployeesController employeesController = new EmployeesController(employeesView);
                     employeesController.showEmployeesView();
                     loginView.setVisible(false);
-                    employeesView.setAdmin("Admin: " + user.getUserName());
+                    employeesView.setAdmin("Admin: " + user.getUsername());
                     System.out.println("Login successfully!");
                 } else {
                     System.out.println("login failed!");

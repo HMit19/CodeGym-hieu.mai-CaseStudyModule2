@@ -9,12 +9,10 @@ import javax.swing.*;
 import static javax.swing.BorderFactory.createEmptyBorder;
 import static javax.swing.SwingConstants.CENTER;
 
-import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.StyleConstants;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 
@@ -141,7 +139,6 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         parttimeEmployees.setBackground(new Color(218, 234, 241));
         panel.setBackground(new Color(218, 234, 241));
         panelButton.setBackground(new Color(218, 234, 241));
-//        employeesTable.setBackground(new Color(242, 235, 233));
         idField.setBorder(BorderFactory.createCompoundBorder(idField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
         nameField.setBorder(BorderFactory.createCompoundBorder(nameField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
         salaryField.setBorder(BorderFactory.createCompoundBorder(salaryField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
@@ -245,7 +242,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         //--------------------------------------------------------------------------------------//
 
 
-        //-----------------------------set jframe---------------------------------------------------//
+        //-----------------------------set frame---------------------------------------------------//
         this.add(panel);
         this.pack();
         this.setResizable(false);
@@ -264,7 +261,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
 
 
     // ------------------------------get info and show on table-----------------------------------//
-    public void showListEmloyees(List<Employees> list) {
+    public void showListEmployees(List<Employees> list) {
         System.out.println("show table");
         int size = list.size();
         Object[][] employees = new Object[size][5];
@@ -490,10 +487,10 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
 
     private boolean validateStatus() {
         if (onStatus.isSelected() || offStatus.isSelected()) {
-            System.out.println("check status successfull");
+            System.out.println("check status successfully");
             return true;
         } else {
-            System.out.println("check status not successfull");
+            System.out.println("check status not successfully");
             showMessage("Status không được để trống!");
             return false;
         }
@@ -504,7 +501,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
             System.out.println("check type successfully");
             return true;
         } else {
-            System.out.println("check type not successfull");
+            System.out.println("check type not successfully");
             showMessage("Type không được để trống!");
             return false;
         }

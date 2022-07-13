@@ -1,4 +1,4 @@
-package quanlinhanvien.module2.MVC.Model.dao;
+package quanlinhanvien.module2.MVC.Model.DAO;
 
 // contains methods to add, remove, edit, delete, read, write
 

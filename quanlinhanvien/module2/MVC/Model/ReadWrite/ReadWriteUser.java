@@ -2,8 +2,8 @@ package quanlinhanvien.module2.MVC.Model.ReadWrite;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 import quanlinhanvien.module2.MVC.Model.Entity.User;
-import quanlinhanvien.module2.MVC.Model.dao.AdminDao;
-import quanlinhanvien.module2.MVC.Model.dao.EmployeesDao;
+import quanlinhanvien.module2.MVC.Model.DAO.AdminDao;
+import quanlinhanvien.module2.MVC.Model.DAO.EmployeesDao;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

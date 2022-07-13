@@ -1,4 +1,4 @@
-package quanlinhanvien.module2.MVC.Model.dao;
+package quanlinhanvien.module2.MVC.Model.DAO;
 
 import quanlinhanvien.module2.MVC.Model.Entity.User;
 
@@ -18,8 +18,8 @@ public class UserDao {
         List<User> listAdmin = adminDao.getListAdmin();
         if (user != null) {
             for (User u : listAdmin) {
-                System.out.println("admin user " + u.getUserName() + " - pass " + u.getPassword());
-                if (u.getUserName().equals(user.getUserName())
+                System.out.println("admin user " + u.getUsername() + " - pass " + u.getPassword());
+                if (u.getUsername().equals(user.getUsername())
                         && u.getPassword().equals(user.getPassword())) {
                     return true;
                 }
@@ -35,7 +35,7 @@ public class UserDao {
         String passAdmin = info[3];
         List<User> listAdmin = adminDao.getListAdmin();
         for (User u : listAdmin) {
-            if (name.equals(u.getUserName())) {
+            if (name.equals(u.getUsername())) {
                 System.out.println("Username already exists!");
                 return 1;
             }

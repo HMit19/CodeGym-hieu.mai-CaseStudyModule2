@@ -1,8 +1,8 @@
 package quanlinhanvien.module2.MVC.Controller;
 
 import quanlinhanvien.module2.MVC.Model.Entity.User;
-import quanlinhanvien.module2.MVC.Model.dao.AdminDao;
-import quanlinhanvien.module2.MVC.Model.dao.UserDao;
+import quanlinhanvien.module2.MVC.Model.DAO.AdminDao;
+import quanlinhanvien.module2.MVC.Model.DAO.UserDao;
 import quanlinhanvien.module2.MVC.View.EmployeesView;
 import quanlinhanvien.module2.MVC.View.LoginView;
 import quanlinhanvien.module2.MVC.View.RegisterView;

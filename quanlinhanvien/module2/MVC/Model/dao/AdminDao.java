@@ -1,4 +1,4 @@
-package quanlinhanvien.module2.MVC.Model.dao;
+package quanlinhanvien.module2.MVC.Model.DAO;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 import quanlinhanvien.module2.MVC.Model.Entity.User;

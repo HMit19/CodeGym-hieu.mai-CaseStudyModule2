@@ -35,10 +35,10 @@ public class RegisterView extends JFrame implements ActionListener, MouseListene
         haveAccount = new JLabel("I have an account?");
         loginLabel = new JLabel("Sign in");
         confirmAccount = new JButton("Confirm");
-        usernameField = new JTextField(17);
-        passwordField = new JPasswordField(17);
-        confirmField = new JPasswordField(17);
-        passwordAdminField = new JPasswordField(17);
+        usernameField = new JTextField(19);
+        passwordField = new JPasswordField(19);
+        confirmField = new JPasswordField(19);
+        passwordAdminField = new JPasswordField(19);
         //-------------------------------------------------------------------------------------------//
 
 
@@ -85,9 +85,9 @@ public class RegisterView extends JFrame implements ActionListener, MouseListene
         layout.putConstraint(SpringLayout.NORTH, passwordAdminField, 170, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, confirmAccount, 150, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, confirmAccount, 200, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, haveAccount, 135, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, haveAccount, 133, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, haveAccount, 237, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, loginLabel, 243, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, loginLabel, 247, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, loginLabel, 235, SpringLayout.NORTH, panel);
         //-------------------------------------------------------------------------------------------//
 
