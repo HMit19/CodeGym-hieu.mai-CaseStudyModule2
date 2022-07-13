@@ -117,7 +117,6 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         listBy.setVisibleRowCount(1);
         listBy.setFixedCellWidth(90);
         listBy.setFixedCellHeight(22);
-        listBy.setFont(new Font("Arial", Font.PLAIN, 14));
         JScrollPane listScroller = new JScrollPane(listBy);
 
 
@@ -174,6 +173,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         Font font = new Font("Cormorant", Font.BOLD, 15);
         Font fontField = new Font("Oswald", Font.PLAIN, 13);
         nameFrame.setFont(new Font("Cooper Black", Font.ITALIC, 60));
+//        listBy.setFont(font);
         idEmployees.setFont(font);
         nameEmployees.setFont(font);
         statusEmployees.setFont(font);
@@ -298,7 +298,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         return (String) listBy.getSelectedValue();
     }
 
-    public void setAdmin(String admin){
+    public void setAdmin(String admin) {
         this.adminLabel.setText(admin);
     }
 
@@ -432,12 +432,14 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         String id = idField.getText();
         if (id == null || "".equals(id.trim())) {
             idField.requestFocus();
+            idField.setText("");
             showMessage("Mã nhân viên  không được để trống!");
             return false;
         }
         String exem = "[0-9]{9}";
         if (!id.matches(exem)) {
             showMessage("Nhập mã nhân viên từ 9 số từ 0-9!");
+            idField.setText("");
             return false;
         }
         return true;
@@ -447,14 +449,19 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         String name = nameField.getText();
         if (name == null || "".equals(name.trim())) {
             nameField.requestFocus();
+            nameField.setText("");
             showMessage("Tên không được trống!");
             return false;
         }
-//        String exem = "[^0-9][a-zA-Z]{5,35}";
-//        if(!name.matches(exem)){
-//            showMessage("Nhập tên không chứa ký tự và số!");
-//            return false;
-//        }
+        for (char i : name.toCharArray()) {
+            if(i != ' '){
+                if (i < 'A' || i > 'z' ||(i > 'Z' && i < 'a')) {
+                    showMessage("Nhập tên không chứa ký tự đặc biệt và số!");
+                    nameField.setText("");
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -465,9 +472,17 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
             showMessage("Tiền lương không được trống!");
             return false;
         }
-        String exem = "[^0][0-9]{5,15}";
+        for (char i : salary.toCharArray()) {
+            if (i > '9' && i < '0') {
+                showMessage("Nhập tiền lương không chứa ký tự!");
+                salaryField.setText("");
+                return false;
+            }
+        }
+        String exem = "[^0][0-9]{5,25}";
         if (!salary.matches(exem)) {
-            showMessage("Nhập lương >= số từ 100,000!");
+            salaryField.setText("");
+            showMessage("Nhập lương phải lớn hơn 100,000!");
             return false;
         }
         return true;
@@ -572,12 +587,8 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
     }
 
 
-    public void addClearInfoListener(ActionListener e ) {
+    public void addClearInfoListener(ActionListener e) {
         clearInfoEmployees.addActionListener(e);
     }
     //---------------------------------------------------------------------------------------------------//
-
-    public static void main(String[] args) {
-        new EmployeesView();
-    }
 }

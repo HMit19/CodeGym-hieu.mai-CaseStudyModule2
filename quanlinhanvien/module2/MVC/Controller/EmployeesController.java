@@ -45,8 +45,8 @@ public class EmployeesController {
                 employeesView.showEmloyees(employees);
                 employeesView.showListEmloyees(employeesDao.getListEmployees());
                 employeesView.showMessage("Add successfully");
+                employeesView.clearInformationEmployees();
             }
-//            employeesView.clearInformationEmployees();
         }
     }
     // ---------------------------------------------------------------------------------//
@@ -88,8 +88,8 @@ public class EmployeesController {
     }
     // ---------------------------------------------------------------------------------//
 
-    class ClearInfoListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+    class ClearInfoListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
             employeesView.clearInformationEmployees();
         }
     }
