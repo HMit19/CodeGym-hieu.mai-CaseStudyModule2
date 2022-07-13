@@ -4,7 +4,10 @@ package quanlinhanvien.module2.MVC.Model.dao;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static quanlinhanvien.module2.MVC.Model.ReadWrite.ReadWriteUser.readEmployeesByFile;
@@ -96,26 +99,69 @@ public class EmployeesDao {
         }
     }
 
-    public List<Employees> unWorking(){
+    public List<Employees> unWorking() {
         List<Employees> list = new ArrayList<Employees>();
-        for(Employees e: listEmployees){
-                System.out.println(e.getStatusEmployees());
-            if(e.getStatusEmployees().equals("Not Working")){
+        for (Employees e : listEmployees) {
+            System.out.println(e.getStatusEmployees());
+            if (e.getStatusEmployees().equals("Not Working")) {
                 list.add(e);
             }
         }
         return list;
     }
 
-    public List<Employees> working(){
+    public List<Employees> working() {
         List<Employees> list = new ArrayList<Employees>();
-        for(Employees e: listEmployees){
+        for (Employees e : listEmployees) {
             System.out.println(e.getStatusEmployees());
-            if(e.getStatusEmployees().equals("Working")){
+            if (e.getStatusEmployees().equals("Working")) {
                 list.add(e);
             }
         }
         return list;
+    }
+    public List<Employees> parttime() {
+        List<Employees> list = new ArrayList<Employees>();
+        for (Employees e : listEmployees) {
+            System.out.println(e.getStatusEmployees());
+            if (e.getTypesEmployees().equals("PartTime")) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
+    public List<Employees> fulltime() {
+        List<Employees> list = new ArrayList<Employees>();
+        for (Employees e : listEmployees) {
+            System.out.println(e.getStatusEmployees());
+            if (e.getTypesEmployees().equals("FullTime")) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
+
+    public void sortById() {
+        Collections.sort(listEmployees, new Comparator<Employees>() {
+            public int compare(Employees employees1, Employees employees2) {
+                return employees1.getIdEmployees().compareTo(employees2.getIdEmployees());
+            }
+        });
+
+
+    }
+
+    public int sortBySalary() {
+        Collections.sort(listEmployees, new Comparator<Employees>() {
+                    public int compare(Employees employees1, Employees employees2) {
+                        if (Integer.parseInt(employees1.getSalaryEmployees()) > Integer.parseInt(employees2.getSalaryEmployees())) {
+                            return 1;
+                        }
+                        return -1;
+                    }
+                }
+        );
+        return -1;
     }
 
     public List<Employees> getListEmployees() {

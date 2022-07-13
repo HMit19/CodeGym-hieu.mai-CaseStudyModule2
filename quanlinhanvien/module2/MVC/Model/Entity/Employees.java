@@ -78,4 +78,9 @@ public class Employees {
     public String toString() {
         return this.idEmployees + "-" + this.nameEmployees + "-" + this.statusEmployees + "-" + this.salaryEmployees + "-" + this.typesEmployees + "\n";
     }
+
+    public <Employees> Comparable<Employees> getLastNameEmployees() {
+
+        return null;
+    }
 }

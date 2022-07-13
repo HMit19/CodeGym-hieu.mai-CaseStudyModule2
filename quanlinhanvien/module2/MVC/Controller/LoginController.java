@@ -25,6 +25,7 @@ public class LoginController {
         this.userDao = new UserDao();
         loginView.addLoginListener(new LoginListener());
         loginView.addRegisterListener(new RegisterListener());
+        loginView.addEnterListener(new EnterListener());
     }
 
     public void showLoginView() {
@@ -37,17 +38,51 @@ public class LoginController {
         public void actionPerformed(ActionEvent e) {
             System.out.println("ActionListener duoc goi");
             User user = loginView.getUser();
-
             if (userDao.checkUser(user)) {
                 employeesView = new EmployeesView();
                 EmployeesController employeesController = new EmployeesController(employeesView);
                 employeesController.showEmployeesView();
                 loginView.setVisible(false);
+                employeesView.setAdmin("Admin " + user.getUserName() + " ");
                 System.out.println("login thanh cong");
             } else {
                 System.out.println("that bai");
                 loginView.resetUser();
                 loginView.showMessage("Invalid username or password.");
+            }
+        }
+    }
+
+
+    class EnterListener implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            System.out.println("keyTyped");
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("keyPressed");
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            System.out.println("keyReleased");
+            User user = loginView.getUser();
+            if (e.getKeyCode() == KeyEvent.VK_ENTER && user != null) {
+                if (userDao.checkUser(user)) {
+                    employeesView = new EmployeesView();
+                    EmployeesController employeesController = new EmployeesController(employeesView);
+                    employeesController.showEmployeesView();
+                    loginView.setVisible(false);
+                    employeesView.setAdmin("Admin: " + user.getUserName());
+                    System.out.println("Login successfully!");
+                } else {
+                    System.out.println("login failed!");
+                    loginView.resetUser();
+                    loginView.showMessage("Invalid username or password.");
+                }
             }
         }
     }

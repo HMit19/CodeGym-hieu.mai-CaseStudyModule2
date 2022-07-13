@@ -4,26 +4,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 
 import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.SwingConstants.CENTER;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import javax.swing.WindowConstants;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.StyleConstants;
 
 import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 
@@ -35,27 +26,21 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
     private JButton editEmployeesBtn;
     private JButton showEmployeesBtn;
     private JButton updateEmployeesBtn;
-    private JButton showWorkingEmployeesBtn;
-    private JButton showUnworkingEmployeesBtn;
+    private JButton clearInfoEmployees;
+
+    private DefaultListModel sortBy;
+    private JList listBy;
     private JLabel nameFrame;
     private JLabel idEmployees;
     private JLabel nameEmployees;
     private JLabel salaryEmployees;
     private JLabel typeEmployees;
     private JLabel statusEmployees;
-
-    private JLabel displayBy;
+    private JLabel adminLabel;
     private ButtonGroup buttonStatus;
     private ButtonGroup buttonType;
     private JScrollPane jScrollPaneEmployeesTable;
     private JTable employeesTable;
-
-    private ButtonGroup sortByGroup;
-    private JRadioButton sortById;
-    private JRadioButton sortByName;
-    private JRadioButton sortByStatus;
-    private JRadioButton sortBySalary;
-    private JRadioButton sortByType;
     private JTextField idField;
     private JTextField nameField;
     private JTextField salaryField;
@@ -78,8 +63,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         editEmployeesBtn = new JButton("Edit");
         showEmployeesBtn = new JButton("Show");
         updateEmployeesBtn = new JButton("Save");
-        showWorkingEmployeesBtn = new JButton("Working");
-        showUnworkingEmployeesBtn = new JButton("UnWorking");
+        clearInfoEmployees = new JButton("Clear");
         //-----------------------------------------------------------------------------------//
 
 
@@ -89,43 +73,21 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         buttonType = new ButtonGroup();
         jScrollPaneEmployeesTable = new JScrollPane();
         employeesTable = new JTable();
-        nameFrame = new JLabel("Quản Lý Nhân Viên");
+        adminLabel = new JLabel("Admin");
+        nameFrame = new JLabel("Employee Manager");
         idEmployees = new JLabel("Id:");
         nameEmployees = new JLabel("Name:");
         statusEmployees = new JLabel("Status:");
         typeEmployees = new JLabel("Type:");
         salaryEmployees = new JLabel("Salary:");
-        displayBy = new JLabel("Display By:");
-        idField = new JTextField(25);
-        nameField = new JTextField(25);
+        idField = new JTextField(27);
+        nameField = new JTextField(27);
         onStatus = new JRadioButton("Working");
         offStatus = new JRadioButton("Not Working");
-        salaryField = new JTextField(25);
-        fulltimeEmployees = new JRadioButton("Fulltime");
-        parttimeEmployees = new JRadioButton("Parttime");
+        salaryField = new JTextField(27);
+        fulltimeEmployees = new JRadioButton("FullTime");
+        parttimeEmployees = new JRadioButton("PartTime");
 
-        JPanel panelSort = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        sortById = new JRadioButton("ID");
-        sortByName = new JRadioButton("Name");
-        sortByStatus = new JRadioButton("Status");
-        sortBySalary = new JRadioButton("Salary");
-        sortByType = new JRadioButton("Type");
-        sortByGroup = new ButtonGroup();
-        sortByGroup.add(sortById);
-        sortByGroup.add(sortByName);
-        sortByGroup.add(sortByStatus);
-        sortByGroup.add(sortBySalary);
-        sortByGroup.add(sortByType);
-
-        //set boder jradio button
-        //sortById.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        //sortById.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        panelSort.add(sortById);
-        panelSort.add(sortByName);
-        panelSort.add(sortByStatus);
-        panelSort.add(sortBySalary);
-        panelSort.add(sortByType);
-        //--------------------------------------------------------------------------------------//
 
         // ----------------------------------set data for table--------------------------------//
         employeesTable.setModel(new DefaultTableModel((Object[][]) data, columnNames));
@@ -135,14 +97,34 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
 
         // ----------------------------------set layout for panel-------------------------//
         SpringLayout layout = new SpringLayout();
-        GridLayout layoutButton = new GridLayout(3, 3);
+        GridLayout layoutButton = new GridLayout(2, 3);
         layoutButton.setHgap(10);
-        layoutButton.setVgap(35);
+        layoutButton.setVgap(25);
+        showEmployeesBtn.setPreferredSize(new Dimension(75, 25));
         //--------------------------------------------------------------------------------------//
+
+
+        sortBy = new DefaultListModel();
+        sortBy.addElement("Down Id");
+        sortBy.addElement("Working");
+        sortBy.addElement("Salary");
+        sortBy.addElement("Not Working");
+        sortBy.addElement("Full-time");
+        sortBy.addElement("Part-time");
+        listBy = new JList(sortBy);
+        listBy.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listBy.setSelectedIndex(0);
+        listBy.setVisibleRowCount(1);
+        listBy.setFixedCellWidth(90);
+        listBy.setFixedCellHeight(22);
+        listBy.setFont(new Font("Arial", Font.PLAIN, 14));
+        JScrollPane listScroller = new JScrollPane(listBy);
 
 
         // --------------------------declare subject manager employees---------------------//
         JPanel panel = new JPanel();
+        panel.add(listScroller);
+        panel.add(showEmployeesBtn);
         JPanel panelButton = new JPanel(layoutButton);
         panelButton.setSize(300, 200);
         panel.setSize(850, 470);
@@ -152,10 +134,15 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         panelButton.add(addEmployeesBtn);
         panelButton.add(deleteEmployeesBtn);
         panelButton.add(editEmployeesBtn);
-        panelButton.add(showEmployeesBtn);
         panelButton.add(updateEmployeesBtn);
-        panelButton.add(showWorkingEmployeesBtn);
-        panelButton.add(showUnworkingEmployeesBtn);
+        panelButton.add(clearInfoEmployees);
+        onStatus.setBackground(new Color(218, 234, 241));
+        offStatus.setBackground(new Color(218, 234, 241));
+        fulltimeEmployees.setBackground(new Color(218, 234, 241));
+        parttimeEmployees.setBackground(new Color(218, 234, 241));
+        panel.setBackground(new Color(218, 234, 241));
+        panelButton.setBackground(new Color(218, 234, 241));
+//        employeesTable.setBackground(new Color(242, 235, 233));
         idField.setBorder(BorderFactory.createCompoundBorder(idField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
         nameField.setBorder(BorderFactory.createCompoundBorder(nameField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
         salaryField.setBorder(BorderFactory.createCompoundBorder(salaryField.getBorder(), createEmptyBorder(0, 3, 2, 0)));
@@ -165,15 +152,14 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         buttonStatus.add(offStatus);
         buttonType.add(fulltimeEmployees);
         buttonType.add(parttimeEmployees);
+        panel.add(adminLabel);
         panel.add(panelButton);
-        panel.add(panelSort);
         panel.add(nameFrame);
         panel.add(idEmployees);
         panel.add(nameEmployees);
         panel.add(salaryEmployees);
         panel.add(typeEmployees);
         panel.add(statusEmployees);
-        panel.add(displayBy);
         panel.add(idField);
         panel.add(nameField);
         panel.add(salaryField);
@@ -187,59 +173,62 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         // ------------------------------------set font for element---------------------------------//
         Font font = new Font("Cormorant", Font.BOLD, 15);
         Font fontField = new Font("Oswald", Font.PLAIN, 13);
-        nameFrame.setFont(new Font("BioRhyme", Font.ITALIC, 50));
+        nameFrame.setFont(new Font("Cooper Black", Font.ITALIC, 60));
         idEmployees.setFont(font);
         nameEmployees.setFont(font);
         statusEmployees.setFont(font);
         salaryEmployees.setFont(font);
         typeEmployees.setFont(font);
         onStatus.setFont(fontField);
-        displayBy.setFont(font);
         offStatus.setFont(fontField);
         fulltimeEmployees.setFont(fontField);
         parttimeEmployees.setFont(fontField);
         employeesTable.setFont(new Font("Oswald", Font.PLAIN, 14));
         idField.setFont(fontField);
+        adminLabel.setFont(new Font("Cooper Black", Font.ITALIC, 15));
         nameField.setFont(fontField);
         salaryField.setFont(fontField);
         //---------------------------------------------------------------------------------------//
 
         // --------------------------------set position component----------------------------------//
-        layout.putConstraint(SpringLayout.EAST, panelButton, -30, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, panelButton, 80, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, nameFrame, 195, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, nameFrame, 8, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.EAST, panelButton, -80, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, panelButton, 163, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, nameFrame, 135, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, nameFrame, 28, SpringLayout.NORTH, panel);
 
         layout.putConstraint(SpringLayout.WEST, idEmployees, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, idEmployees, 110, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, idEmployees, 135, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, nameEmployees, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, nameEmployees, 140, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, nameEmployees, 165, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, typeEmployees, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, typeEmployees, 230, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, typeEmployees, 255, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, statusEmployees, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, statusEmployees, 170, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, statusEmployees, 195, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, salaryEmployees, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, salaryEmployees, 200, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, salaryEmployees, 225, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.EAST, idField, -380, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, idField, 85, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, idField, 133, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.EAST, nameField, -380, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, nameField, 115, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, nameField, 165, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.EAST, salaryField, -380, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, salaryField, 177, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, salaryField, 225, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, onStatus, 350, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, onStatus, 145, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, onStatus, 195, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.EAST, adminLabel, -10, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, adminLabel, 6, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, offStatus, 230, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, offStatus, 145, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, offStatus, 195, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, fulltimeEmployees, 350, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, fulltimeEmployees, 205, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, fulltimeEmployees, 255, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, parttimeEmployees, 230, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, parttimeEmployees, 205, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, parttimeEmployees, 255, SpringLayout.NORTH, panel);
 
 
-        layout.putConstraint(SpringLayout.WEST, displayBy, 80, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, displayBy, 270, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, panelSort, 170, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, panelSort, 265, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.EAST, showEmployeesBtn, -100, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, showEmployeesBtn, 265, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.EAST, listScroller, -180, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, listScroller, 265, SpringLayout.NORTH, panel);
 
         layout.putConstraint(SpringLayout.WEST, jScrollPaneEmployeesTable, 23, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.SOUTH, jScrollPaneEmployeesTable, -15, SpringLayout.SOUTH, panel);
@@ -262,7 +251,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         this.setResizable(false);
         this.setSize(850, 600);
         this.setLocationRelativeTo(null);
-        this.setTitle("Employees Information");
+        this.setTitle("Employees Manager");
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -293,7 +282,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         employeesTable.getColumnModel().getColumn(3).setPreferredWidth(140);
         employeesTable.getColumnModel().getColumn(4).setPreferredWidth(190);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        centerRenderer.setHorizontalAlignment(CENTER);
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         employeesTable.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
@@ -304,6 +293,15 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
     //------------------------------------------------------------------------------------------//
 
 
+    //--------------------------------------get selected list-----------------------------------//
+    public String getSelectedListSortBy() {
+        return (String) listBy.getSelectedValue();
+    }
+
+    public void setAdmin(String admin){
+        this.adminLabel.setText(admin);
+    }
+
     //-------------------------------------- set information--------------------------------------//
     public void setInformation(Employees employees) {
         idField.setText(employees.getIdEmployees());
@@ -313,8 +311,8 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         String type = employees.getTypesEmployees();
         offStatus.setSelected("Not Working".equals(status) ? true : false);
         onStatus.setSelected("Working".equals(status) ? true : false);
-        fulltimeEmployees.setSelected("Fulltime".equals(type) ? true : false);
-        fulltimeEmployees.setSelected("Parttime".equals(type) ? true : false);
+        fulltimeEmployees.setSelected("FullTime".equals(type) ? true : false);
+        fulltimeEmployees.setSelected("PartTime".equals(type) ? true : false);
     }
     //--------------------------------------------------------------------------------------------//
 
@@ -346,7 +344,7 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
             employees.setNameEmployees(PacalCase(nameField.getText().toLowerCase()));
             employees.setSalaryEmployees(salaryField.getText());
             employees.setStatusEmployees(onStatus.isSelected() ? "Working" : "Not Working");
-            employees.setTypesEmployees(fulltimeEmployees.isSelected() ? "Fulltime" : "Parttime");
+            employees.setTypesEmployees(fulltimeEmployees.isSelected() ? "FullTime" : "PartTime");
             return employees;
         } catch (Exception exception) {
             showMessage(exception.getMessage());
@@ -573,18 +571,13 @@ public class EmployeesView extends JFrame implements ActionListener, ListSelecti
         deleteEmployeesBtn.addActionListener(e);
     }
 
-    public void addShowByWorkingEmployeeListener(ActionListener e) {
-        showWorkingEmployeesBtn.addActionListener(e);
-    }
 
-    public void addShowByUnWorkingEmployeeListener(ActionListener e) {
-        showUnworkingEmployeesBtn.addActionListener(e);
+    public void addClearInfoListener(ActionListener e ) {
+        clearInfoEmployees.addActionListener(e);
     }
     //---------------------------------------------------------------------------------------------------//
 
     public static void main(String[] args) {
         new EmployeesView();
     }
-
-
 }

@@ -24,8 +24,7 @@ public class EmployeesController {
         view.addDeleteEmployeesListener(new DeleteEmployeesListener());
         view.addShowEmployeesListener(new ShowEmployeesListener());
         view.addUpdateEmployeesListener(new UpdateEmployeesListener());
-        view.addShowByUnWorkingEmployeeListener(new showUnworkingEmployeesListener());
-        view.addShowByWorkingEmployeeListener(new showWorkingEmployeesListener());
+        view.addClearInfoListener(new ClearInfoListener());
     }
     // ---------------------------------------------------------------------------------//
 
@@ -47,7 +46,7 @@ public class EmployeesController {
                 employeesView.showListEmloyees(employeesDao.getListEmployees());
                 employeesView.showMessage("Add successfully");
             }
-            employeesView.clearInformationEmployees();
+//            employeesView.clearInformationEmployees();
         }
     }
     // ---------------------------------------------------------------------------------//
@@ -89,6 +88,12 @@ public class EmployeesController {
     }
     // ---------------------------------------------------------------------------------//
 
+    class ClearInfoListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            employeesView.clearInformationEmployees();
+        }
+    }
+
 
     // -------------------------------delete employees by id------------------------------//
     class DeleteEmployeesListener implements ActionListener {
@@ -118,10 +123,25 @@ public class EmployeesController {
 
     // ---------------------------------show employees----------------------------------//
     class ShowEmployeesListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             System.out.println("Called show employees in table");
-            List<Employees> employeesList = employeesDao.getListEmployees();
+            List<Employees> employeesList = null;
+            String sortBy = employeesView.getSelectedListSortBy();
+            if (sortBy.equals("Down Id")) {
+                employeesDao.sortById();
+                employeesList = employeesDao.getListEmployees();
+            } else if (sortBy.equals("Working")) {
+                employeesList = employeesDao.working();
+            } else if (sortBy.equals("Not Working")) {
+                employeesList = employeesDao.unWorking();
+            } else if (sortBy.equals("Salary")) {
+                employeesDao.sortBySalary();
+                employeesList = employeesDao.getListEmployees();
+            } else if (sortBy.equals("Full-time")) {
+                employeesList = employeesDao.fulltime();
+            } else if (sortBy.equals("Part-time")) {
+                employeesList = employeesDao.parttime();
+            }
             employeesView.showListEmloyees(employeesList);
         }
     }
@@ -145,38 +165,6 @@ public class EmployeesController {
                 employeesView.setIdFieldEnable();
                 employeesView.clearInformationEmployees();
                 employeesView.showMessage("Update Successfull");
-            }
-        }
-    }
-    // ---------------------------------------------------------------------------------//
-
-
-    // ------------------------------show employees working--------------------------------//
-    class showWorkingEmployeesListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("call show working");
-            if (employeesDao.working().isEmpty()) {
-                employeesView.showMessage("Empty!");
-            } else {
-                employeesView.showListEmloyees(employeesDao.working());
-            }
-        }
-    }
-    // ----------------------------------------------------------------------------------------//
-
-
-    // ---------------------------------show employees not working------------------------------//
-    class showUnworkingEmployeesListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("call show not Unworking");
-            if (employeesDao.unWorking().isEmpty()) {
-                employeesView.showMessage("Empty!");
-            } else {
-                employeesView.showListEmloyees(employeesDao.unWorking());
             }
         }
     }

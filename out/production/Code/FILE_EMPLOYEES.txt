@@ -1,10 +1,14 @@
-201200120-Le Van Son-Not Working-2500000-Fulltime
-201200121-Mai Van Hoa-Working-200000-Fulltime
-201200199-Mai Van Phu-Working-200000-Parttime
-201200123-Mai Van Hieu-Working-2500000-Fulltime
+201200120-Le Van Son-Not Working-2500000-FullTime
+201200121-Mai Van Hoa-Working-200000-FullTime
+201200123-Mai Van Hieu-Working-2500000-FullTime
 201200145-Mai Thi Thu Ha-Working-2050000-Parttime
-201200999-Tran Trung Kien-Working-2000000-Fulltime
-201200895-Mai Thi Phuong-Not Working-200000-Parttime
-201200567-Mai Van Hieu-Not Working-100000-Parttime
-201200224-Mai Van Binh-Working-2000000-Parttime
-205124422-Vu Thi Hong Nhung-Not Working-29023400-Fulltime
+201200157-Mai The Hai-Not Working-27000000-PartTime
+201200199-Mai Van Phu-Working-200000-PartTime
+201200224-Mai Van Binh-Working-2000000-PartTime
+201200567-Mai Van Hieu-Not Working-100000-PartTime
+201200895-Mai Thi Phuong-Not Working-200000-PartTime
+201200999-Tran Trung Kien-Working-2000000-FullTime
+202000234-Tang Thi Hoa-Working-400000-FullTime
+205124422-Vu Thi Hong Nhung-Not Working-29023400-FullTime
+209200999-Lo Vi Song-Working-10000000-FullTime
+000200345-La Khanh Linh-Working-20400020-FullTime

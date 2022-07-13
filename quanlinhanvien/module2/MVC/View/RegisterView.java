@@ -4,10 +4,7 @@ package quanlinhanvien.module2.MVC.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class RegisterView extends JFrame implements ActionListener, MouseListener {
     private JLabel registerLabel;
@@ -113,7 +110,7 @@ public class RegisterView extends JFrame implements ActionListener, MouseListene
         this.add(panel);
         this.setSize(370, 300);
         this.setResizable(false);
-        this.setTitle("Sign up");
+        this.setTitle("Register");
         this.setLocationRelativeTo(null);
         this.setVisible(false);
         //----------------------------------------------------------------------------------------//
@@ -227,6 +224,9 @@ public class RegisterView extends JFrame implements ActionListener, MouseListene
         System.out.println("call sign in");
     }
 
+    public void addEnterListener(KeyListener listener) {
+        confirmAccount.addKeyListener(listener);
+    }
     @Override
     public void mouseClicked(MouseEvent e) {
 

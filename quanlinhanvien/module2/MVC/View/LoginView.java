@@ -4,10 +4,7 @@ package quanlinhanvien.module2.MVC.View;
 import quanlinhanvien.module2.MVC.Model.Entity.User;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -33,8 +30,6 @@ public class LoginView extends JFrame implements ActionListener, MouseListener {
         passwordlabel = new JLabel("Password");
         userNameField = new JTextField(20);
         passwordField = new JPasswordField(20);
-        passwordField.addActionListener(this);
-
         loginButton = new JButton("Sign in");
         registerLabel = new JLabel("Sign up");
         dontAccount = new JLabel("Don't have an account?");
@@ -61,7 +56,6 @@ public class LoginView extends JFrame implements ActionListener, MouseListener {
         panel.add(loginButton);
         panel.add(registerLabel);
         panel.add(dontAccount);
-//        panel.add(registerButton);
 
         // set font for label
         Font font = new Font("Arial", Font.PLAIN, 13);
@@ -132,6 +126,11 @@ public class LoginView extends JFrame implements ActionListener, MouseListener {
 
     public void addRegisterListener(MouseListener listener) {
         registerLabel.addMouseListener(listener);
+    }
+
+    public void addEnterListener(KeyListener e) {
+        loginButton.addKeyListener(e);
+
     }
 
     @Override
