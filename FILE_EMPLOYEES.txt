@@ -1,3 +1,6 @@
+000000001-Nguyen Duc Manh-Working-1000000000-FullTime
+000000002-Mai Van Son-Working-504321000-PartTime
+000200345-La Khanh Linh-Working-20400020-FullTime
 201200120-Le Van Son-Not Working-2500000-FullTime
 201200121-Mai Van Hoa-Working-200000-FullTime
 201200123-Mai Van Hieu-Working-2500000-FullTime
@@ -11,4 +14,4 @@
 202000234-Tang Thi Hoa-Working-400000-FullTime
 205124422-Vu Thi Hong Nhung-Not Working-29023400-FullTime
 209200999-Lo Vi Song-Working-10000000-FullTime
-000200345-La Khanh Linh-Working-20400020-FullTime
+101099999-Nguyen Huu Ba-Not Working-456131530000-FullTime

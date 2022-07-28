@@ -1,6 +1,5 @@
 package quanlinhanvien.module2.MVC.Model.DAO;
 
-import quanlinhanvien.module2.MVC.Model.Entity.Employees;
 import quanlinhanvien.module2.MVC.Model.Entity.User;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class AdminDao {
     public AdminDao() {
         this.listAdmin = new ArrayList<>(readListAdmin(FILE_ADMIN));
     }
-
+`
     public void add(User user) {
         listAdmin.add(user);
         writeListAdmin(listAdmin, FILE_ADMIN);
